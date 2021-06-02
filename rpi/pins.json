@@ -1,0 +1,26 @@
+{
+  "motorL": {
+    "a": 11,
+    "b": 13
+  },
+  "motorR": {
+    "a": 16,
+    "b": 18
+  },
+  "sensors": {
+    "ultrasonic": {
+      "right": {
+        "TRIG": 29,
+        "ECHO": 31
+      },
+      "left": {
+        "TRIG": 3,
+        "ECHO": 5
+      },
+      "front": {
+        "TRIG": 35,
+        "ECHO": 33
+      }
+    }
+  }
+}

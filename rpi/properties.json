@@ -1,0 +1,26 @@
+{
+  "MQTT": {
+    "host": "localhost",
+    "port": 1883,
+    "timeout": 60,
+    "auth": {
+      "authType": "none",
+      "userName": "Hey.Sensy",
+      "userPassword": "Hey.Sensy"
+    }
+  },
+  "MEDHA": {
+    "nodeID": "MEDHA_P01",
+    "envFile": "envdetails.json",
+    "connectionMode": "MQTT",
+    "controlMode": "POC1",
+    "decisionMode": "directionalDistance",
+    "sensors": {
+      "ultrasonic": ["right01", "left01", "front01"]
+    }
+  },
+  "mock": {
+    "isMock": true,
+    "mockOptions": {}
+  }
+}
