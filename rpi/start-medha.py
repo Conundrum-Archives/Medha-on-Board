@@ -31,6 +31,7 @@ def startBackgroundTasks():
 
 def startMainLoop(goAhead):
   # init dependant modules and give a goAhead key
+  dd = directionDecisions.basicDecision(config.property["MEDHA"]["decisionMode"])
   controlData = {
       "goAhead": goAhead
   }
@@ -39,6 +40,9 @@ def startMainLoop(goAhead):
     # example1: read camera functionality and call decision module
     # example2: read sensor data to decide whih direction to move
     log.debug("goAhead is %s.", controlData["goAhead"])
+    log.info("decision is %s", dd.decide({
+      "camera": 0
+    }))
 
     # sleep is added to limit empty loop timing or reduce stress on processing - can be removed later when modules are imported.
     time.sleep(2)

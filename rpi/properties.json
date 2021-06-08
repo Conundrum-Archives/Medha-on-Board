@@ -14,7 +14,12 @@
     "envFile": "envdetails.json",
     "connectionMode": "MQTT",
     "controlMode": "POC1",
-    "decisionMode": "directionalDistance",
+    "decisionMode": "linearDistance",
+    "distance": {
+      "ideal": 50,
+      "upperTreshold": 10,
+      "lowerTreshold": 10
+    },
     "sensors": {
       "ultrasonic": ["right01", "left01", "front01"]
     }
