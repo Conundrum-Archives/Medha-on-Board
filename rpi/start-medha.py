@@ -3,6 +3,7 @@ import threading
 import atexit
 from tasks.startActivity import initializeEnvDetailsFile
 import localization.readSensor as readSensor
+import localization.actuateMotors as actuateMotors
 import localization.directionDecisions as directionDecisions
 import utils.LogModule as LogModule
 import utils.Configs as Configs
@@ -32,6 +33,7 @@ def startBackgroundTasks():
 def startMainLoop(goAhead):
   # init dependant modules and give a goAhead key
   dd = directionDecisions.basicDecision(config.property["MEDHA"]["decisionMode"])
+  am = actuateMotors.setMotors()
   controlData = {
       "goAhead": goAhead
   }
@@ -40,9 +42,15 @@ def startMainLoop(goAhead):
     # example1: read camera functionality and call decision module
     # example2: read sensor data to decide whih direction to move
     log.debug("goAhead is %s.", controlData["goAhead"])
-    log.info("decision is %s", dd.decide({
+
+    # get decision from camera bsed on distance
+    camDecision = dd.decide({
       "camera": 0
-    }))
+    })
+    log.info("decision from cameradecision is %s", camDecision)
+
+    # set motor motion based on decision
+    am.motorMotion(camDecision["goto"])
 
     # sleep is added to limit empty loop timing or reduce stress on processing - can be removed later when modules are imported.
     time.sleep(2)

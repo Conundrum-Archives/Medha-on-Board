@@ -6,14 +6,15 @@ sys.path.append(os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__
 import LogModule
 import Configs
 
+# initialize logger and config modules
+log = LogModule.init_logger()
+config = Configs.configValues()
+
 # import Rpi modules if not mock
 if (( not config.property["mock"]["isMock"] )):
   import RPi.GPIO as GPIO
   GPIO.setmode( GPIO.BOARD )
 
-# initialize logger and config modules
-log = LogModule.init_logger()
-config = Configs.configValues()
 
 
 class setMotors:

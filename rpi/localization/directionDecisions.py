@@ -25,9 +25,20 @@ class basicDecision:
         # process camera-detected values
         face = cvDetect.face()
         faceDetected = face.detect()
+        if "distance" not in faceDetected:
+          # nothing detected
+          return {
+            "goto": "stop",
+            "gap": float('nan'),
+            "flag": "not detected"
+          }
         if len(faceDetected['distance']) > 1:
           #process for correct face/distance
-          pass
+          # return nan until method is implemented
+          return {
+            "goto": "stop",
+            "gap": float('nan')
+          }
         else:
           # when single face is detected
           dist = faceDetected["distance"][-1]
@@ -50,7 +61,7 @@ class basicDecision:
                 "gap": gap
               }
           return {
-            "goto": "none",
+            "goto": "stop",
             "gap": gap
           }
 
