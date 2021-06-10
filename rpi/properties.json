@@ -3,10 +3,11 @@
     "host": "localhost",
     "port": 1883,
     "timeout": 60,
+    "tls": true,
     "auth": {
-      "authType": "none",
-      "userName": "Hey.Sensy",
-      "userPassword": "Hey.Sensy"
+      "authType": "password",
+      "userName": "username",
+      "userPassword": "password"
     }
   },
   "MEDHA": {

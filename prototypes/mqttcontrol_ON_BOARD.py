@@ -20,10 +20,10 @@ am = actuateMotors.setMotors()
 log.info("starting mqttcontrol_ON_BOARD module.\nNODEID: %s", str(config.property["MEDHA"]["nodeID"]))
 
 def motorControlMiddleware(args):
-    payloadData = json.loads(args["message"].payload.decode("utf-8"))
-    log.debug(payloadData)
-    if "actionMode" in payloadData and "setMotion" in payloadData:
-        am.motorMotion(payloadData["setMotion"]["value"])
+        payloadData = json.loads(args["message"].payload.decode("utf-8"))
+        log.debug(payloadData)
+        if "actionMode" in payloadData and "setMotion" in payloadData:
+                am.motorMotion(payloadData["setMotion"]["value"])
 
 mqttobj = MQTT.MQTT(config.property["MEDHA"]["nodeID"], onMessageMethod=motorControlMiddleware)
 mqttobj.startCommunication()

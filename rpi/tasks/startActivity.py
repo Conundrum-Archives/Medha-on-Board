@@ -13,17 +13,17 @@ log = LogModule.init_logger()
 config = Configs.configValues()
 
 def initializeEnvDetailsFile():
-  hostname = socket.gethostname()
-  data = {
-    "pid": os.getpid(),
-    "hostname": hostname,
-    "ip": socket.gethostbyname(hostname)
-  }
-  # delete if file exist during run time
-  if os.path.exists(config.property["MEDHA"]["envFile"]):
-    os.remove(config.property["MEDHA"]["envFile"])
-  with open(config.property["MEDHA"]["envFile"], 'w') as f:
-    json.dump(data, f)
+    hostname = socket.gethostname()
+    data = {
+        "pid": os.getpid(),
+        "hostname": hostname,
+        "ip": socket.gethostbyname(hostname)
+    }
+    # delete if file exist during run time
+    if os.path.exists(config.property["MEDHA"]["envFile"]):
+        os.remove(config.property["MEDHA"]["envFile"])
+    with open(config.property["MEDHA"]["envFile"], 'w') as f:
+        json.dump(data, f)
 
 
 
@@ -33,8 +33,8 @@ def initializeEnvDetailsFile():
 
 ########## Mock functions ##########
 if (( config.property["mock"]["isMock"] ) and (__file__ == "startActivity.py")):
-  # init class object with options
+    # init class object with options
 
-  # check execution
-  log.info("basicChecks is executing from MOCK run")
-  initializeEnvDetailsFile()
+    # check execution
+    log.info("basicChecks is executing from MOCK run")
+    initializeEnvDetailsFile()
