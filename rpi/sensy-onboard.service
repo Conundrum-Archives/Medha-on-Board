@@ -1,0 +1,12 @@
+[Unit]
+Description=Hey.Medha on-board service
+After=multi-user.target
+
+[Service]
+WorkingDirectory=/path/to/medha-on-board
+Type=idle
+ExecStart=/usr/bin/python3.7 start-medha.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
