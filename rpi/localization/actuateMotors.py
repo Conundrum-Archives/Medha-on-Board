@@ -21,6 +21,7 @@ class setMotors:
 
     """
         motion table values for controling motor driver. refer to motor-driver table for values.
+        # NOTE: This class is direct interface to GPIO pins of motor.
     """
 
     motionTable = {
@@ -60,6 +61,8 @@ class setMotors:
         log.debug("motor control pins initialised for actuation")
 
     def motorMotion(self, motionName):
+        """will set the motor motion based on command recieved - start, stop, left, right"""
+
         # check if proper motionName is provided in message passed.
         if motionName not in self.motionTable:
             log.error("unknown motionName: %s", motionName)

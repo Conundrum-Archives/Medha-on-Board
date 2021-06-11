@@ -5,14 +5,20 @@ import socket
 
 # append utils path and import utils modules
 sys.path.append(os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), "utils"))
+from Communication import communicate
 import LogModule
 import Configs
 
 # initialize logger and config modules
 log = LogModule.init_logger()
 config = Configs.configValues()
+comm = communicate()
 
-def initializeEnvDetailsFile():
+"""startup tasks when starting main-loop"""
+
+def initialize1():
+    """initial tasks - set envfile and send message of startup"""
+
     hostname = socket.gethostname()
     data = {
         "pid": os.getpid(),
@@ -24,6 +30,9 @@ def initializeEnvDetailsFile():
         os.remove(config.property["MEDHA"]["envFile"])
     with open(config.property["MEDHA"]["envFile"], 'w') as f:
         json.dump(data, f)
+
+    # send message that medha is started
+    comm.sendStartup()
 
 
 
@@ -37,4 +46,4 @@ if (( config.property["mock"]["isMock"] ) and (__file__ == "startActivity.py")):
 
     # check execution
     log.info("basicChecks is executing from MOCK run")
-    initializeEnvDetailsFile()
+    initialize1()

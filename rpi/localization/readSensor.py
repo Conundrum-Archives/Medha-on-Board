@@ -14,11 +14,12 @@ import readUltraSonicSensor
 log = LogModule.init_logger()
 config = Configs.configValues()
 
+"""read sensor data from sensor module."""
+
 class ultrasonicSensor:
 
     """read class to read unltrasonic sensor values"""
 
-    mock = False
     def __init__(self, ultrasonicSensors, options):
         self.ultrasonicSensors = ultrasonicSensors
         if (("mock" in options) and (options["mock"])):
@@ -26,11 +27,22 @@ class ultrasonicSensor:
             self.mock = options["mock"]
 
     def getValue(self, ultrasonicSensorName):
+        """
+            get value from ultrasonicSensor.
+            takes in one arg: ultrasonicSensorName
+            returns readings from sensor
+        """
+
         # read value from readUltraSonicSensor module
         russ = readUltraSonicSensor.readUltraSonicSensor({
             "mock": self.mock
         })
         return russ.readSensorValue(ultrasonicSensorName)
+
+
+
+
+
 
 
 

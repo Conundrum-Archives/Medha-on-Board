@@ -84,9 +84,9 @@ class MQTT:
         # call custom function if defined
         if self.onMessageMethod is not None: self.onMessageMethod({'client':client, 'data':data, 'message':message})
 
-    def publishMsg(self, message):
-        self.client.publish(topic=self.mqttChannel["publish"], payload=message, qos=2)
-        log.debug("message published\n %s -> %s", message, self.mqttChannel["publish"])
+    def publishMsg(self, message, topic="publish"):
+        self.client.publish(topic=self.mqttChannel[topic], payload=message, qos=2)
+        log.debug("message published\n %s -> %s", message, self.mqttChannel[topic])
 
     def startCommunication(self):
         self.client.loop_forever()

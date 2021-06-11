@@ -14,12 +14,14 @@ if not config.property["mock"]["isMock"]:
     import RPi.GPIO as GPIO
     GPIO.setmode( GPIO.BOARD )
 
+"""exit check class to perform tasks during exit/signal handler"""
+
 class exitChecks:
     def __init__(self):
         pass
 
     def atExitCheck1(self):
-        log.info("[atexit::atExitCheck1] stopping and exiting Medha")
+        log.warning("[atexit::atExitCheck1] stopping and exiting Medha")
         # clear GPIO pins
         if not config.property["mock"]["isMock"]:
             log.debug("cleaning up GPIO pins")

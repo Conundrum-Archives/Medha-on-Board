@@ -20,9 +20,11 @@ if (( not config.property["mock"]["isMock"] )):
 
 class readUltraSonicSensor:
 
-    """sensor class to read unltrasonic sensor values"""
+    """
+        sensor class to read unltrasonic sensor values
+        # NOTE: This class is direct interface to GPIO pins of ultrasonic-sensor.
+    """
 
-    mock = False
     def __init__(self, options):
         self.usspins = config.pins["sensors"]["ultrasonic"]
         if (("mock" in options) and (options["mock"])):
@@ -35,6 +37,12 @@ class readUltraSonicSensor:
                 GPIO.setup(self.usspins[pinName]["ECHO"], GPIO.IN)
 
     def readSensorValue(self, pinName):
+        """
+            returns sensor values from ultrasonic sensor.
+            takes in one parameter: pinName
+            returns reading from ultrasonic sensor
+        """
+
         if not self.mock:
             # read and return sensor value
             GPIO.output(self.usspins[pinName]["TRIG"], True)

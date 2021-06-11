@@ -36,6 +36,11 @@ class communicate:
     def sendMessage(self, ref, message):
         self.mqttobj.publishMsg(self.buildMessage(ref, message))
 
+    def sendStartup(self, message={
+        "status": "on"
+    }):
+        self.mqttobj.publishMsg(message=self.buildMessage("startup", message), topic="status")
+
     def handleMQTTConnect(self, *args):
         log.info("MQTT connection is successful")
         log.debug(args)

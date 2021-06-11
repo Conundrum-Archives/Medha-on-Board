@@ -3,7 +3,7 @@ Description=Hey.Medha on-board service
 After=multi-user.target
 
 [Service]
-WorkingDirectory=/home/pi/Hey.Medha/medha-on-board
+WorkingDirectory=/path/to/medha-on-board
 Type=idle
 ExecStart=/usr/bin/python3.7 start-medha.py
 Restart=always

@@ -10,7 +10,13 @@ import Configs
 log = LogModule.init_logger()
 config = Configs.configValues()
 
+"""method for deciding based on controls or sensor data"""
+
 class basicDecision:
+    """
+        simple decision maker class based.
+        sensors mode available: ultrasonic-sensor, camera.
+    """
 
     def __init__(self, mode):
         self.mode = mode
@@ -33,7 +39,7 @@ class basicDecision:
                         "flag": "not detected"
                     }
                 if len(faceDetected['distance']) > 1:
-                    #process for correct face/distance
+                    #process for correct face/distance for multiple detected
                     # return nan until method is implemented
                     return {
                         "goto": "stop",
@@ -63,11 +69,18 @@ class basicDecision:
                                 "gap": gap,
                                 "detectedDistance": dist
                             }
+                    # default return for invalid gap
                     return {
                         "goto": "stop",
                         "gap": gap,
                         "detectedDistance": dist
                     }
+
+
+
+
+
+
 
 
 

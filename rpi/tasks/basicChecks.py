@@ -14,22 +14,28 @@ config = Configs.configValues()
 
 
 class basicChecks:
-
-    bgTask_Sched = sched.scheduler(time.time, time.sleep)
+    """
+        class to check and monitor basic things on the board.
+        # NOTE: methods are not implemented. these are only placeholders for impl later stage.
+    """
 
     def __init__(self, period):
+        # initialise schedulers to run tasks every x seconds
+        self.bgTask_Sched = sched.scheduler(time.time, time.sleep)
         self.period = period
 
     def basicChecks1(self):
-        log.info("starting startBackgroundTasks method as a schedule every %s sec", self.period)
         self.bgTask_Sched.enter(self.period, 1, self._basicChecks1, (self.bgTask_Sched,))
         self.bgTask_Sched.run()
+        log.debug("startBackgroundTasks method started as a schedule every %s sec", self.period)
 
     def _basicChecks1(self, bgTaskSched):
-        log.debug("[BG-JOB::basicChecks1] running basicChecks1")
+        log.debug("[BG-JOB::_basicChecks1] running basicChecks1")
         # do the checks/actions
         self.bgTask_Sched.enter(self.period, 1, self._basicChecks1, (bgTaskSched,))
-        log.debug("[BG-JOB::basicChecks1] finished basicChecks1. Re-scheduled the task again")
+        log.debug("[BG-JOB::_basicChecks1] finished basicChecks1. Re-scheduled the task again")
+
+
 
 
 
