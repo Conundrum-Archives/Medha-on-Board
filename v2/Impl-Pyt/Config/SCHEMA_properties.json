@@ -1,0 +1,98 @@
+{
+    "type": "object",
+    "properties": {
+        "isMock": {
+            "type": "boolean"
+        },
+        "mockProperties": {
+            "type": "object"
+        },
+        "systemInfo": {
+            "type": "object",
+            "properties": {
+                "deviceID": {
+                    "type": "string"
+                },
+                "envFile": {
+                    "type": "string"
+                },
+                "settings": {
+                    "type": "object",
+                    "properties": {
+                        "retryValidationInSec": {
+                            "type": "number"
+                        }
+                    }
+                }
+            }
+        },
+        "logger": {
+            "type": "object",
+            "properties": {
+                "level": {
+                    "type": "string"
+                },
+                "channels": {
+                    "type": "object",
+                    "properties": {
+                        "FILE": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "CONSOLE": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "communication": {
+            "type": "object",
+            "properties": {
+                "mode": {
+                    "type": "object",
+                    "properties": {
+                        "default": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "MQTT": {
+                    "type": "object",
+                    "properties": {
+                        "host": {
+                            "type": "string"
+                        },
+                        "port": {
+                            "type": "number"
+                        },
+                        "timeout": {
+                            "type": "number"
+                        },
+                        "tls": {
+                            "type": "boolean"
+                        },
+                        "auth": {
+                            "type": "object",
+                            "properties": {
+                                "authType": {
+                                    "type": "string"
+                                },
+                                "userName": {
+                                    "type": "string"
+                                },
+                                "userPassword": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

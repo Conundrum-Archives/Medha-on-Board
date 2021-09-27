@@ -1,0 +1,36 @@
+{
+  "isMock": true,
+  "mockProperties": {},
+  "systemInfo": {
+    "deviceID": "MEDHA_P02",
+    "envFile": "envdetails.json",
+    "settings": {
+      "retryValidationInSec": 12
+    }
+  },
+  "logger": {
+    "level": "DEBUG",
+    "channels": {
+      "FILE": {
+        "name": "medha.log"
+      },
+      "CONSOLE": {}
+    }
+  },
+  "communication": {
+    "mode": {
+      "default": "MQTT"
+    },
+    "MQTT": {
+      "host": "broker.hivemq.com",
+      "port": 1883,
+      "timeout": 60,
+      "tls": false,
+      "auth": {
+        "authType": "none",
+        "userName": "username",
+        "userPassword": "password"
+      }
+    }
+  }
+}
